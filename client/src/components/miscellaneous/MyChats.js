@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react'
 import { getSender } from '../../config/ChatLogics';
 import { ChatState } from '../../Context/ChatProvider';
 import ChatLoading from '../ChatLoading';
+import GroupChatModal from './GroupChatModal';
 
-export default function MyChats() {
+export default function MyChats({fetchAgain}) {
 
   const [loggedUser, setLoggedUser] = useState();
-  const [test,setTest] = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
   const [isLoadingChat, setIsLoadingChat] = useState(false);
 
@@ -20,7 +20,7 @@ export default function MyChats() {
     const logdata = await JSON.parse(localStorage.getItem("userInfo"));
     setLoggedUser(logdata)
     console.log(logdata);
-    
+
     try {
       const config = {
         headers: {
@@ -29,7 +29,6 @@ export default function MyChats() {
       };
 
       const { data } = await axios.get('/api/chat', config);
-      // console.log(data);
       setChats(data);
 
     } catch (error) {
@@ -46,12 +45,9 @@ export default function MyChats() {
 
   useEffect(() => {
     // setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
-    setTest('this is me');
     console.log('HIIIIIIII');
-    console.log(test);
-    // console.log(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, []);
+  }, [fetchAgain]);
 
   return (
     <Box
@@ -77,13 +73,15 @@ export default function MyChats() {
         alignItems='center'
       >
         My Chats
-        <Button
-          display={'flex'}
-          fontSize={{ base: "17px", md: '10px', lg: '17px' }}
-          rightIcon={<AddIcon />}
-        >
-          New Group Chat
-        </Button>
+        <GroupChatModal>
+          <Button
+            display={'flex'}
+            fontSize={{ base: "17px", md: '10px', lg: '17px' }}
+            rightIcon={<AddIcon />}
+          >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Box>
 
       <Box
@@ -113,8 +111,6 @@ export default function MyChats() {
               >
                 <Text>
                   {!chat.isGroupChat ? (
-                    console.log("HEllo" + test),
-                    console.log(loggedUser),
                     getSender(loggedUser, chat.users)
                   ) : chat.chatName}
                 </Text>

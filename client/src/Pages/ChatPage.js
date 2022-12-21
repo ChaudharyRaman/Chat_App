@@ -8,7 +8,8 @@ import MyChats from '../components/miscellaneous/MyChats';
 export default function ChatPage() {
 
   const { user } = ChatState();
-  // console.log(user);
+  const [fetchAgain, setFetchAgain] = useState(false);
+
   return (
     <div style={{ width: "100%" }}>
 
@@ -17,11 +18,11 @@ export default function ChatPage() {
         display={"flex"}
         justifyContent="space-between"
         w={'100%'}
-        h={'91.5h'}
+        h={'91.5vh'}
         p={'10px'}
       >
-        {user && <MyChats/>}
-        {user && <ChatBox />}
+        {user && <MyChats fetchAgain={fetchAgain} />}
+        {user && <ChatBox fetchAgain={fetchAgain} setFetchAgain = {setFetchAgain} />}
       </Box>
     </div>
   )
