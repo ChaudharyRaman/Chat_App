@@ -19,7 +19,7 @@ var socket, selectedChatCompare;
 export default function SingleChat({ fetchAgain, setFetchAgain }) {
 
     const toast = useToast();
-    const { user, selectedChat, setSelectedChat } = ChatState();
+    const { user, selectedChat, setSelectedChat, notification, setNotification } = ChatState();
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [newMessage, setNewMessage] = useState("");
@@ -50,7 +50,7 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
             };
 
             const { data } = await axios.get(`/api/message/${selectedChat._id}`, config);
-            console.log(data);
+            // console.log(data);
             setMessages(data);
             setLoading(false);
 
@@ -89,11 +89,17 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
         socket.on('message received', (newMessageReceived) => {
             if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id) {
                 // Give Notification
+                if(!notification.includes(newMessageReceived)){
+                    setNotification([newMessageReceived,...notification])
+                    setFetchAgain(!fetchAgain)
+                }
             } else {
                 setMessages([...messages, newMessageReceived])
             }
         })
     })
+
+    // console.log(notification);
 
     const sendMessage = async (event) => {
         if (event.key === "Enter" && newMessage) {
@@ -112,7 +118,7 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
                     chatId: selectedChat._id
                 }, config);
 
-                console.log(data);
+                // console.log(data);
 
                 socket.emit('new message', data);
                 setMessages([...messages, data]);
