@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://socialapp-backend-bpe1.onrender.com",
+  "proxy": "https://chat-app-backend-qmli.onrender.com",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.3",
