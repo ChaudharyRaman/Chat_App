@@ -71,3 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <!--   "proxy": "http://127.0.0.1:5000",
  -->
+  <!-- "proxy": "https://socialapp-backend-bpe1.onrender.com", -->
