@@ -5,7 +5,7 @@ module.exports = function (app) {
     '/api',
     createProxyMiddleware({
       // 👇️ make sure to update your target
-      target: 'http://localhost:5000/',
+      target: 'https://chat-app-backend-qmli.onrender.com',
       changeOrigin: true,
     }),
   );
