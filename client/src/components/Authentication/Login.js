@@ -1,7 +1,7 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, useToast, VStack } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 
@@ -37,7 +37,7 @@ export default function Login() {
                 }
             };
             const {data} = await axios.post(
-                "/api/user/login",
+                `${process.env.REACT_APP_BASE_URL}/api/user/login`,
                 {email,password},
                 config
             )

@@ -7,7 +7,6 @@ import Signup from '../components/Authentication/Signup'
 export default function Homepage() {
 
     const navigate = useNavigate();
-
     useEffect(()=>{
         const user = JSON.parse(localStorage.getItem("userInfo"));
 

@@ -53,7 +53,7 @@ export default function SideDrawer() {
                 },
             };
 
-            const { data } = await axios.get(`/api/user?search=${search}`, config);
+            const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user?search=${search}`, config);
             // console.log(data);
             setLoading(false);
             setSearchResult(data);
@@ -81,7 +81,7 @@ export default function SideDrawer() {
                 },
             }
             
-            const { data } = await axios.post('/api/chat', { userId }, config);
+            const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/chat`, { userId }, config);
             console.log(data);
             if(!chats.find((c)=>c._id === data._id)){
                 setChats([data,...chats]);

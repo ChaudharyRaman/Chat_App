@@ -77,7 +77,7 @@ export default function Signup() {
             return;
         }
 
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             toast({
                 title: 'Password Do Not Match',
                 status: 'warning',
@@ -96,7 +96,7 @@ export default function Signup() {
                 },
             };
             const { data } = await axios.post(
-                "/api/user",
+                `${process.env.REACT_APP_BASE_URL}/api/user`,
                 { name, email, password, pic },
                 config
             );

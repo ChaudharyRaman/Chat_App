@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-   "proxy": "https://chat-app-backend-qmli.onrender.com",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.3",
@@ -13,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
     "framer-motion": "^7.6.19",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lottie": "^1.2.3",
