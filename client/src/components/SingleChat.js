@@ -50,7 +50,7 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
                 },
             };
 
-            const { data } = await axios.get(`/api/message/${selectedChat._id}`, config);
+            const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/message/${selectedChat._id}`, config);
             // console.log(data);
             setMessages(data);
             setLoading(false);
@@ -114,7 +114,7 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
                 }
                 setNewMessage("");
                 // this is not affect as setNewMEssage is asyncronous  
-                const { data } = await axios.post('/api/message', {
+                const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/message`, {
                     content: newMessage,
                     chatId: selectedChat._id
                 }, config);
