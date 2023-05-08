@@ -15,7 +15,7 @@ const messageRoutes = require("./routes/messageRoutes");
 
 const corsOptions = {
   origin: "*",
-  credentials: true, //access-control-allow-credentials:true
+  // credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
 const app = express();
@@ -56,7 +56,7 @@ const server = app.listen(PORT, () => {
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
-    credentials: true
+    // credentials: true
   },
   pingTimeout: 60000,
 });

@@ -14,7 +14,7 @@ import Lottie from 'react-lottie'
 import animationData from '../animations/typing.json'
 
 // const ENDPOINT = 'http://localhost:5000';
-const ENDPOINT = 'https://chat-app-backend-qmli.onrender.com';
+// const ENDPOINT = 'https://chat-app-backend-qmli.onrender.com';
 var socket, selectedChatCompare;
 
 export default function SingleChat({ fetchAgain, setFetchAgain }) {
@@ -70,7 +70,7 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
     }
 
     useEffect(() => {
-        socket = io(ENDPOINT);
+        socket = io(`${process.env.REACT_APP_BASE_URL}`);
         socket.emit('setup', user);
         socket.on('connected', () => setSocketConnected(true))
         socket.on('typing', () => setIsTyping(true))
