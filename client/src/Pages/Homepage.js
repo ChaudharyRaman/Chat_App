@@ -31,7 +31,7 @@ export default function Homepage() {
             </Box>
             <Box bg={"white"} w="100%" p={4} borderRadius={"lg"} borderWidth="1px" >
                 <Tabs variant='soft-rounded' colorScheme='green'>
-                    <TabList mb={'1em'}>
+                    <TabList mb={'1em'}>    
                         <Tab w={'50%'}>Login</Tab>
                         <Tab w={'50%'}>Sign up</Tab>
                     </TabList>
