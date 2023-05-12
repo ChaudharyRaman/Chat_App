@@ -126,7 +126,7 @@ export default function SideDrawer() {
                 </Tooltip>
 
                 <Text fontSize={'3xl'} fontFamily={'Work sans'}>
-                    Talk-A-Tive
+                    TALKIE
                 </Text>
                 <div>
                     <Menu>
